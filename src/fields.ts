@@ -29,7 +29,7 @@ export const pbSchemaTypescriptMap = {
   json: (fieldSchema: FieldSchema) =>
     `null | ${fieldNameToGeneric(fieldSchema.name)}`,
   relation: (fieldSchema: FieldSchema) =>
-    fieldSchema.maxSelect && fieldSchema.maxSelect === 1
+    fieldSchema.options.maxSelect && fieldSchema.options.maxSelect === 1
       ? RECORD_ID_STRING_NAME
       : `${RECORD_ID_STRING_NAME}[]`,
   select: (fieldSchema: FieldSchema, collectionName: string) => {
@@ -44,7 +44,7 @@ export const pbSchemaTypescriptMap = {
 
   // DEPRECATED: PocketBase v0.8 does not have a dedicated user relation
   user: (fieldSchema: FieldSchema) =>
-    fieldSchema.maxSelect && fieldSchema.maxSelect > 1
+    fieldSchema.options.maxSelect && fieldSchema.options.maxSelect > 1
       ? `${RECORD_ID_STRING_NAME}[]`
       : RECORD_ID_STRING_NAME,
 }

@@ -29,7 +29,8 @@ export type FieldSchema = {
     | "editor"
   system: boolean
   required: boolean
-  unique: boolean
+  unique: boolean,
+  options: RecordOptions
 } & RecordOptions
 
 export type CollectionRecord = {
